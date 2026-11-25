@@ -1,0 +1,36 @@
+name: Extract Connie v1.4 zip
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify approved zip
+        run: |
+          ls -l Georges_Assistant_Connie_v1.4_2026-11-25.zip
+          echo "b282f45d1c52f964cf721932327feb3e  Georges_Assistant_Connie_v1.4_2026-11-25.zip" | md5sum -c -
+
+      - name: Extract and move files to repo root
+        run: |
+          unzip -o Georges_Assistant_Connie_v1.4_2026-11-25.zip
+          shopt -s dotglob
+          mv v1.4/* .
+          rmdir v1.4
+          rm Georges_Assistant_Connie_v1.4_2026-11-25.zip
+          ls -la
+          test -f server.py && test -f Procfile && test -f runtime.txt
+
+      - name: Commit extracted files
+        run: |
+          git config user.name "georgedigitalmarket-jpg"
+          git config user.email "georgedigitalmarket@gmail.com"
+          git add -A
+          git commit -m "Extract Connie v1.4 release files" || echo "nothing to commit"
+          git push
