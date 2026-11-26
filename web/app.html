@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#152c4b">
+<meta name="description" content="George's Assistant — Connie, George Wederski's personal assistant. Personal copy only, not for sale.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="George's Assistant">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<title>George's Assistant — Connie</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>George's Assistant — Connie</h1>
+    <p id="tagline">Connie — George Wederski's personal assistant, in a girl's voice · v1.2 · personal copy, not for sale</p>
+  </div>
+  <div id="who" hidden><span id="whoName"></span> <button id="signOut" class="secondary">Sign out</button></div>
+</header>
+
+<main id="auth">
+  <div class="panel narrow">
+    <h2 id="authTitle">Sign in</h2>
+    <form id="authForm">
+      <label>Username<input name="username" autocomplete="username" required minlength="3" maxlength="60" pattern="[A-Za-z0-9_]+"></label>
+      <label id="pwLabel">Password (12 or more characters)<input name="password" type="password" autocomplete="current-password" required minlength="12" maxlength="200"></label>
+      <label id="newPwLabel" hidden>New password (12 or more characters)<input name="new_password" type="password" autocomplete="new-password" minlength="12" maxlength="200"></label>
+      <label id="codeLabel" hidden>Recovery code<input name="recovery_code" autocomplete="off"></label>
+      <button id="authGo">Sign in</button>
+    </form>
+    <p id="authMsg" class="msg" role="alert"></p>
+    <p class="links">
+      <button class="link" data-mode="login">Sign in</button> ·
+      <button class="link" data-mode="register">Create account</button> ·
+      <button class="link" data-mode="recover">Forgot password</button>
+    </p>
+    <div id="recoveryShow" class="warning" hidden></div>
+  </div>
+</main>
+
+<main id="app" hidden>
+  <nav id="tabs" aria-label="Sections"></nav>
+  <p id="flash" class="msg" role="status"></p>
+  <div id="view"></div>
+</main>
+
+<div id="printArea"></div>
+<footer class="fineprint">George's Assistant — Connie · v1.2 · Owner: George Wederski · Personal copy only, not for sale · Figures you enter are estimates, not bank balances. Not tax, legal, medical or investment advice. <small>© 2026 George Wederski. All rights reserved. No part of this book/app may be copied, reproduced, or shared without written permission from George Wederski.</small></footer>
+<script src="csp-safe.js"></script>
+<script src="app.js"></script>
+<script src="plus.js"></script>
+<script src="salesdata.js"></script>
+<script src="salesdesk.js"></script>
+<script src="music.js"></script>
+</body>
+</html>
